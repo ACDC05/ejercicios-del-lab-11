@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina el Número</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            padding: 10px;
+            width: 50px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            margin-left: 10px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Adivina el Número</h1>
+    <p>He elegido un número entre 1 y 10. ¿Cuál crees que es?</p>
+    <input type="number" id="adivinanza" min="1" max="10">
+    <button onclick="adivinarNumero()">Adivinar</button>
+    <div id="resultado"></div>
+
+    <script>
+        // Generar un número aleatorio entre 1 y 10
+        const numeroAleatorio = Math.floor(Math.random() * 10) + 1;
+
+        function adivinarNumero() {
+            const adivinanza = parseInt(document.getElementById('adivinanza').value);
+            const resultadoDiv = document.getElementById('resultado');
+
+            if (adivinanza === numeroAleatorio) {
+                resultadoDiv.innerHTML = "¡Felicidades, adivinaste el número!";
+            } else {
+                resultadoDiv.innerHTML = `Lo siento, el número era ${numeroAleatorio}.`;
+            }
+        }
+    </script>
+</body>
+</html>

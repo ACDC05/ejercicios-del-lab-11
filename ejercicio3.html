@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Descuento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora de Descuento</h1>
+    <label for="monto">Ingrese el monto total de su compra:</label>
+    <input type="number" id="monto" placeholder="Monto" required>
+    <button onclick="calcularDescuento()">Calcular</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calcularDescuento() {
+            const monto = parseFloat(document.getElementById('monto').value);
+            let resultado = '';
+
+            if (isNaN(monto) || monto < 0) {
+                resultado = 'Por favor, ingrese un monto válido.';
+            } else {
+                if (monto > 100) {
+                    const descuento = monto * 0.10; // 10% de descuento
+                    const montoFinal = monto - descuento;
+                    resultado = `Se aplica un descuento del 10%. El monto final a pagar es: $${montoFinal.toFixed(2)}`;
+                } else {
+                    resultado = `No se aplica descuento. El monto final a pagar es: $${monto.toFixed(2)}`;
+                }
+            }
+
+            document.getElementById('resultado').innerText = resultado;
+        }
+    </script>
+
+</body>
+</html>
